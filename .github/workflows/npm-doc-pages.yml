@@ -18,18 +18,18 @@ on:
   workflow_call:
     inputs:
       node-version:
-        description: 'Node version'
-        default: '22.x'
+        description: "Node version"
+        default: "22.x"
         type: string
         required: false
       doc-path:
-        description: 'Path to generated docs'
-        default: 'docs'
+        description: "Path to generated docs"
+        default: "docs"
         type: string
         required: false
       deploy-ref:
-        description: 'The ref to deploy Pages. Typically this is the default branch'
-        default: 'refs/heads/master'
+        description: "The ref to deploy Pages. Typically this is the default branch"
+        default: "refs/heads/master"
         type: string
         required: false
 

@@ -1,0 +1,18 @@
+{
+  "name": "workflows",
+  "version": "0.0.0",
+  "private": true,
+  "author": "8 Hobbies, LLC",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": "22.11.0"
+  },
+  "scripts": {
+    "format": "prettier . --write"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "prettier": "^3.3.3",
+    "tsx": "^4.19.2"
+  }
+}

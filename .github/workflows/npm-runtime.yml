@@ -18,33 +18,56 @@ on:
   workflow_call:
     inputs:
       node-versions:
-        description: 'Node versions. The first version is the main version that tests on all OSes.'
+        description: "Node versions. The first version is the main version that tests on all OSes."
         default: '["22.x", "20.x", "18.x"]'
         type: string
         required: false
-      oses:
-        description: 'Operating Systems. The first OS is the main OS that tests all Node versions on.'
+      os-versions:
+        description: "Operating Systems. The first OS is the main OS that tests all Node versions on."
         default: '["ubuntu-24.04", "macos-15", "windows-2022"]'
         type: string
         required: false
 
 jobs:
+  setup:
+    name: Runtime Matrix Setup
+    runs-on: ubuntu-24.04
+    outputs:
+      matrix: ${{ steps.matrix.outputs.value }}
+
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          repository: "8hobbies/workflows"
+      - name: Use Node.js
+        uses: actions/setup-node@v4.1.0
+        with:
+          node-version-file: package.json
+          cache: "npm"
+      - name: Install Dependencies
+        run: npm ci
+      - name: Process inputs
+        id: matrix
+        run: echo value='${npx tsx scripts/convert-node-os-versions.ts ${{ inputs.node-versions }} ${{ inputs.os-versions }}' >> $GITHUB_OUTPUT
+      - name: Show setup result
+        run: echo "${{ steps.matrix.outputs.value }}"
+
   test:
     name: Runtime
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.platform.osVersion }}
+    needs: [setup]
 
     strategy:
       matrix:
-        node-version: ${{ fromJSON(inputs.node-versions) }}
-        os: ${{ fromJSON(inputs.oses) }}
+        platform: ${{fromJSON(needs.setup.outputs.matrix)}}
 
     steps:
       - uses: actions/checkout@v4.2.2
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js ${{ matrix.platform.nodeVersion }}
         uses: actions/setup-node@v4.1.0
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ matrix.platform.nodeVersion }}
           cache: "npm"
 
       - name: Install Dependencies

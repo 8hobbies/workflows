@@ -18,8 +18,8 @@ on:
   workflow_call:
     inputs:
       node-version:
-        description: 'Node version'
-        default: '22.x'
+        description: "Node version"
+        default: "22.x"
         type: string
         required: false
 
