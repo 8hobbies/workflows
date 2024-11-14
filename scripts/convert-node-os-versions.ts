@@ -40,4 +40,4 @@ const result: Combination[] = [
     .map((nodeVersion) => ({ nodeVersion, osVersion: osVersions[0] })),
 ];
 
-console.log(`value='${JSON.stringify(result)}'`);
+console.log(`value=${JSON.stringify(result)}`);
