@@ -59,7 +59,7 @@ jobs:
 
   deploy:
     name: Deploy Pages
-    if: github.ref == ${{ inputs.deploy-branch }}
+    if: github.ref == 'refs/heads/${{ inputs.deploy-branch }}'
     runs-on: ubuntu-24.04
     permissions:
       pages: write
