@@ -48,7 +48,7 @@ jobs:
         run: npm ci
       - name: Process inputs
         id: matrix
-        run: echo value='${npx tsx scripts/convert-node-os-versions.ts ${{ inputs.node-versions }} ${{ inputs.os-versions }}' >> $GITHUB_OUTPUT
+        run: npx tsx scripts/convert-node-os-versions.ts '${{ inputs.node-versions }}' '${{ inputs.os-versions }}' >> $GITHUB_OUTPUT
       - name: Show setup result
         run: echo "${{ steps.matrix.outputs.value }}"
 

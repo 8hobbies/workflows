@@ -15,7 +15,10 @@
  * limitations under the License.
  */
 
-/** Convert inputs of Node versions and OS versions to the desired test matrix. */
+/** Convert inputs of Node versions and OS versions to the desired test matrix.
+ *
+ * For npm-runtime.yml workflow.
+ */
 
 interface Combination {
   nodeVersion: string;
@@ -37,4 +40,4 @@ const result: Combination[] = [
     .map((nodeVersion) => ({ nodeVersion, osVersion: osVersions[0] })),
 ];
 
-console.log(JSON.stringify(result));
+console.log(`value='${JSON.stringify(result)}'`);
