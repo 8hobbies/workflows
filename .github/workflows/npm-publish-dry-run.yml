@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Lint
+name: Publish Dry Run
 
 on:
   workflow_call:
@@ -24,10 +24,9 @@ on:
         required: false
 
 jobs:
-  lint:
-    name: Lint
+  run:
+    name: Publish Dry Run
     runs-on: ubuntu-24.04
-
     steps:
       - uses: actions/checkout@v4
 
@@ -35,10 +34,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node-version }}
-          cache: "npm"
 
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Lint
-        run: npm run lint
+      - run: npm ci
+      - run: npm publish --dry-run
