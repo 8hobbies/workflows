@@ -27,8 +27,8 @@ on:
         default: 'docs'
         type: string
         required: false
-      deploy-branch:
-        description: 'The branch to deploy Pages. Typically this is the default branch'
+      deploy-ref:
+        description: 'The ref to deploy Pages. Typically this is the default branch'
         default: 'refs/heads/master'
         type: string
         required: false
@@ -59,7 +59,7 @@ jobs:
 
   deploy:
     name: Deploy Pages
-    if: github.ref == '${{ inputs.deploy-branch }}'
+    if: ${{ github.ref == inputs.deploy-ref }}
     runs-on: ubuntu-24.04
     permissions:
       pages: write
