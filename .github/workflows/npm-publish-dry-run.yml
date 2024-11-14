@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Publish Dry Run
+name: Npm Publish Dry Run
 
 on:
   workflow_call:
