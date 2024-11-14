@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Lint
+name: Build and Deploy Docs as Pages
 
 on:
   workflow_call:
@@ -22,23 +22,48 @@ on:
         default: '22.x'
         type: string
         required: false
+      doc-path:
+        description: 'Path to generated docs'
+        default: 'docs'
+        type: string
+        required: false
 
 jobs:
-  lint:
-    name: Lint
+  build:
+    name: Build Pages
     runs-on: ubuntu-24.04
 
     steps:
       - uses: actions/checkout@v4.2.2
 
-      - name: Use Node.js ${{ inputs.node-version }}
-        uses: actions/setup-node@v4.1.0
+      - uses: actions/setup-node@v4.1.0
         with:
           node-version: ${{ inputs.node-version }}
           cache: "npm"
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Lint
-        run: npm run lint
+      - name: Generate Docs
+        run: npm run doc
+
+      - name: Upload GitHub Pages Artifact
+        uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          path: ${{ inputs.doc-path }}
+
+  deploy:
+    name: Deploy Pages
+    if: github.ref == ${{ github.event.repository.default_branch }}
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4.0.5
