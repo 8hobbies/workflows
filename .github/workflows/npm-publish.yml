@@ -26,7 +26,6 @@ on:
       npm-auth-token:
         description: "Npm token for publishing"
         required: true
-        type: string
 
 jobs:
   build:
