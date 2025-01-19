@@ -5,7 +5,7 @@
   "author": "8 Hobbies, LLC",
   "license": "Apache-2.0",
   "engines": {
-    "node": "22.12.0"
+    "node": "22.13.0"
   },
   "scripts": {
     "lint": "prettier . --check",
