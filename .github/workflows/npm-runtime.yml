@@ -1,4 +1,4 @@
-# Copyright 2024 8 Hobbies, LLC <hong@8hobbies.com>
+# Copyright 2024-2025 8 Hobbies, LLC <hong@8hobbies.com>
 #
 # Licensed under the Apache License, Version 2.0(the "License");
 # you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ on:
     inputs:
       node-versions:
         description: "Node versions. The first version is the main version that tests on all OSes."
-        default: '["22.x", "20.x", "18.x"]'
+        default: '["24.x", "22.x", "20.x"]'
         type: string
         required: false
       os-versions:
