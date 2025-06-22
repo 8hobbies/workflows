@@ -12,8 +12,8 @@
     "format": "prettier . --write"
   },
   "devDependencies": {
-    "@types/node": "22.15.30",
+    "@types/node": "22.15.31",
     "prettier": "3.5.3",
-    "tsx": "4.19.4"
+    "tsx": "4.20.3"
   }
 }
