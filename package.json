@@ -5,7 +5,7 @@
   "author": "8 Hobbies, LLC",
   "license": "Apache-2.0",
   "engines": {
-    "node": "22.19.0"
+    "node": "22.20.0"
   },
   "scripts": {
     "lint": "prettier . --check",
@@ -14,6 +14,6 @@
   "devDependencies": {
     "@types/node": "22.18.6",
     "prettier": "3.6.2",
-    "tsx": "4.20.5"
+    "tsx": "4.20.6"
   }
 }
