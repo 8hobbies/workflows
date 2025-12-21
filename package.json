@@ -5,14 +5,14 @@
   "author": "8 Hobbies, LLC",
   "license": "Apache-2.0",
   "engines": {
-    "node": "24.11.1"
+    "node": "24.12.0"
   },
   "scripts": {
     "lint": "prettier . --check",
     "format": "prettier . --write"
   },
   "devDependencies": {
-    "@types/node": "24.10.1",
+    "@types/node": "24.10.4",
     "prettier": "3.7.4",
     "tsx": "4.21.0"
   }
