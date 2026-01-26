@@ -36,7 +36,7 @@ jobs:
       matrix: ${{ steps.matrix.outputs.value }}
 
     steps:
-      - uses: actions/checkout@v6.0.1
+      - uses: actions/checkout@v6.0.2
         with:
           repository: "8hobbies/workflows"
       - name: Use Node.js
@@ -62,7 +62,7 @@ jobs:
         platform: ${{fromJSON(needs.setup.outputs.matrix)}}
 
     steps:
-      - uses: actions/checkout@v6.0.1
+      - uses: actions/checkout@v6.0.2
 
       - name: Use Node.js ${{ matrix.platform.nodeVersion }}
         uses: actions/setup-node@v6.2.0
