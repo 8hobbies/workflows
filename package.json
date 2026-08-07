@@ -5,15 +5,15 @@
   "author": "8 Hobbies, LLC",
   "license": "Apache-2.0",
   "engines": {
-    "node": "24.16.0"
+    "node": "24.18.1"
   },
   "scripts": {
     "lint": "prettier . --check",
     "format": "prettier . --write"
   },
   "devDependencies": {
-    "@types/node": "24.13.1",
-    "prettier": "3.8.3",
-    "tsx": "4.22.4"
+    "@types/node": "24.13.3",
+    "prettier": "3.9.6",
+    "tsx": "4.23.1"
   }
 }
